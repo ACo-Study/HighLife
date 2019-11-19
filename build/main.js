@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var app = (0, _express["default"])();
 var port = 3000;
-var devPort = 3001;
+var devPort = 4000;
 
 if (process.env.NODE_ENV == "development") {
   console.log("Server is running on development mode");

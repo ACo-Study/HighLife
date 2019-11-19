@@ -5,7 +5,7 @@ module.exports = {
     "@babel/polyfill",
     "react-hot-loader/patch",
     "./src/index.js",
-    "webpack-dev-server/client?http://0.0.0.0:3001",
+    "webpack-dev-server/client?http://0.0.0.0:4000",
     "webpack/hot/only-dev-server"
   ],
 
@@ -23,6 +23,10 @@ module.exports = {
     proxy: {
       "**": "http://localhost:3000"
     }
+  },
+
+  performance: {
+    hints: process.env.NODE_ENV === "production" ? "warning" : false
   },
 
   plugins: [

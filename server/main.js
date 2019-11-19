@@ -4,7 +4,7 @@ import webpack from "webpack";
 
 const app = express();
 const port = 3000;
-const devPort = 3001;
+const devPort = 4000;
 
 if (process.env.NODE_ENV == "development") {
   console.log("Server is running on development mode");
