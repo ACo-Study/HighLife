@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const path = require("path");
 
 module.exports = {
   entry: [
@@ -39,6 +40,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        include: [path.resolve(__dirname, "src/")],
         loaders: [
           "babel-loader?" +
             JSON.stringify({

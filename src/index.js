@@ -1,7 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+// import { App } from "./containers/App";
+// import { Navigation } from "./components";
 
-let rootElement = document.getElementById("root");
+import App from "./containers/App";
 
-ReactDOM.render(<App />, rootElement);
+const rootElement = document.getElementById("root");
+ReactDOM.render(
+  <App />,
+  //   <Router>
+  //     <div>
+  //       <Navigation />
+  //       <Route exact path="/" component={App} />
+  //       {/* <Route path="/home" component={Home} /> */}
+  //     </div>
+  //   </Router>,
+  rootElement
+);
