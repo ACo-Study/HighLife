@@ -1,22 +1,15 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import Navigation from "./Navigation";
+import Home from "./Home";
+import Login from "./Login";
+import Register from "./Register";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
 
-  render() {
-    return (
-      <div>
-        <h1>App</h1>
-        {/* {this.props.children} */}
-      </div>
-    );
-  }
-}
+export { Navigation, Home, Login, Register };
 
-App.propTypes = {};
-App.defaultProps = {};
+// import App from './App';
+// import Home from './Home';
+// import Login from './Login';
+// import Register from './Register';
+// import Wall from './Wall';
 
-export default App;
+// export { App, Home, Login, Register, Wall };

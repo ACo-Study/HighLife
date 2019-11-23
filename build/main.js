@@ -6,13 +6,18 @@ var _webpackDevServer = _interopRequireDefault(require("webpack-dev-server"));
 
 var _webpack = _interopRequireDefault(require("webpack"));
 
-var _posts = _interopRequireDefault(require("./routes/posts"));
+var _path = _interopRequireDefault(require("path"));
+
+var _bodyParser = _interopRequireDefault(require("body-parser"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var app = (0, _express["default"])();
 var port = 3000;
-var devPort = 4000;
+var devPort = 4000; // app.use(morgan("dev"));
+
+app.use(_bodyParser["default"].json());
+app.use("/", _express["default"]["static"](_path["default"].join(__dirname, "./../public")));
 
 if (process.env.NODE_ENV == "development") {
   console.log("Server is running on development mode");
@@ -26,11 +31,6 @@ if (process.env.NODE_ENV == "development") {
   });
 }
 
-app.use("/", _express["default"]["static"](__dirname + "/../public"));
-app.get("/hello", function (req, res) {
-  return res.send("Can you hear me?");
-});
-app.use("/posts", _posts["default"]);
 var server = app.listen(port, function () {
   console.log("Express listening on port", port);
 });
