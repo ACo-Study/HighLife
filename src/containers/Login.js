@@ -1,12 +1,52 @@
-import React from 'react';
-import { Authentication } from '../components/App';
+import React from "react";
+import { Authentication } from "../components";
+import { connect } from "react-redux";
+import { loginRequest } from "../actions/authentication";
 
-const Login = () => {
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleLogin(id, pw) {
+    return this.props.loginRequest(id, pw).then(() => {
+      if (this.props.status === "SUCCESS") {
+        // create session data
+        let loginData = {
+          isLoggedIn: true,
+          username: id
+        };
+        alert("SUCCESS");
+        return true;
+      } else {
+        alert("FAIL");
+        return false;
+      }
+    });
+  }
+
+  render() {
     return (
-        <div>
-            <Authentication isMember={true} />
-        </div>
+      <div>
+        <Authentication isMember={true} onLogin={this.handleLogin} />
+      </div>
     );
+  }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    status: state.authentication.login.status
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loginRequest: (id, pw) => {
+      return dispatch(loginRequest(id, pw));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

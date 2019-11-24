@@ -9,10 +9,11 @@ npm install --save express body-parser
 
 React 모듈
 
-npm install --save react react-dom redux react-redux
+npm install --save react react-dom redux react-redux redux-thunk react-addons-update
 
 npm install --save axios react-router-dom redux react-redux
 
+npm install --save axios
 
 
 
