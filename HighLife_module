@@ -1,7 +1,6 @@
 Node 모듈
 
-npm install --save express body-parser
-
+npm install --save express body-parser morgan
 
 
 
@@ -14,6 +13,8 @@ npm install --save react react-dom redux react-redux redux-thunk react-addons-up
 npm install --save axios react-router-dom redux react-redux
 
 npm install --save axios
+
+
 
 
 
@@ -39,5 +40,3 @@ npm install @babel/polyfill
 nodemon
 
 cross-env
-
- morgan

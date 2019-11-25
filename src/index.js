@@ -8,7 +8,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Navigation, Home, Login, Register } from "./containers";
+import { Navigation, Home, Login, Register } from "./pages";
 
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";

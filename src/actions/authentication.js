@@ -11,7 +11,7 @@ export function loginRequest(username, password) {
     dispatch(login());
 
     return axios
-      .post("/api/account/signin", { username, password })
+      .post("/api/account/login", { username, password })
       .then(response => {
         dispatch(loginSuccess(username));
       })
