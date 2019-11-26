@@ -12,15 +12,14 @@ class Login extends React.Component {
   handleLogin(id, pw) {
     return this.props.loginRequest(id, pw).then(() => {
       if (this.props.status === "SUCCESS") {
-        // create session data
         let loginData = {
           isLoggedIn: true,
           username: id
         };
-        alert("SUCCESS");
+        alert(this.props.status);
         return true;
       } else {
-        alert("FAIL");
+        alert(this.props.status);
         return false;
       }
     });

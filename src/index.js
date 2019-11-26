@@ -7,7 +7,7 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Navigation, Home, Login, Register } from "./pages";
 
 import { Provider } from "react-redux";
@@ -24,9 +24,11 @@ ReactDOM.render(
     <Router>
       <div>
         <Navigation />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+        </Switch>
       </div>
     </Router>
   </Provider>,

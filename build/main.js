@@ -24,7 +24,6 @@ app.use(_bodyParser["default"].json());
 app.use("/", _express["default"]["static"](_path["default"].join(__dirname, "./../public")));
 app.use("/api", _routes["default"]);
 app.get("*", function (req, res) {
-  console.log("1");
   res.sendFile(_path["default"].resolve(__dirname, "./../public/index.html"));
 });
 app.use(function (err, req, res, next) {
