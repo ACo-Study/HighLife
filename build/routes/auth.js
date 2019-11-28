@@ -7,17 +7,18 @@ exports["default"] = void 0;
 
 var _express = _interopRequireDefault(require("express"));
 
-var _auth = _interopRequireDefault(require("./auth"));
+var _user = _interopRequireDefault(require("../models/user"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var router = _express["default"].Router();
 
-router.use("/*", function (req, res, next) {
-  res.setHeader("Expires", "-1");
-  res.setHeader("Cache-Control", "must-revalidate, private");
-  next();
+router.post("/login", function (req, res) {
+  console.log(req.body.username);
+
+  _user["default"].findAll().then(function (results) {
+    console.log("result: ", results[0].dataValues);
+  });
 });
-router.use("/auth", _auth["default"]);
 var _default = router;
 exports["default"] = _default;

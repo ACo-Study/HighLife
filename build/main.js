@@ -21,6 +21,9 @@ var port = 3000;
 var devPort = 4000;
 app.use((0, _morgan["default"])("dev"));
 app.use(_bodyParser["default"].json());
+app.use(_bodyParser["default"].urlencoded({
+  extended: true
+}));
 app.use("/", _express["default"]["static"](_path["default"].join(__dirname, "./../public")));
 app.use("/api", _routes["default"]);
 app.get("*", function (req, res) {
