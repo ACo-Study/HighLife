@@ -2,7 +2,7 @@ Node 모듈
 
 npm install --save express body-parser morgan
 
-
+npm install --save sequelize mysql2
 
 
 

@@ -15,6 +15,7 @@ const devPort = 4000;
 
 app.use(morgan("dev"));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", express.static(path.join(__dirname, "./../public")));
 app.use("/api", api);
 
