@@ -6,8 +6,8 @@ class Authentication extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: ""
+      user_id: "",
+      user_pw: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,24 +22,24 @@ class Authentication extends Component {
   }
 
   handleLogin() {
-    let id = this.state.username;
-    let pw = this.state.password;
-    this.props.onLogin(id, pw).then(success => {
+    let user_id = this.state.user_id;
+    let user_pw = this.state.user_pw;
+    this.props.onLogin(user_id, user_pw).then(success => {
       if (!success) {
         this.setState({
-          password: ""
+          user_pw: ""
         });
       }
     });
   }
 
   handleRegister() {
-    // let id = this.state.username;
-    // let pw = this.state.password;
+    // let id = this.state.user_id;
+    // let pw = this.state.user_pw;
     // this.props.onRegister(id, pw).then(success => {
     //   if (!success) {
     //     this.setState({
-    //       password: ""
+    //       user_pw: ""
     //     });
     //   }
     // });
@@ -49,18 +49,18 @@ class Authentication extends Component {
     const inputBoxes = (
       <div>
         <input
-          name="username"
+          name="user_id"
           type="text"
           placeholder="아이디(이메일)"
           onChange={this.handleChange}
-          value={this.state.username}
+          value={this.state.user_id}
         />
         <input
-          name="password"
-          type="password"
+          name="user_pw"
+          type="user_pw"
           placeholder="비밀번호"
           onChange={this.handleChange}
-          value={this.state.password}
+          value={this.state.user_pw}
         />
       </div>
     );
@@ -100,7 +100,7 @@ Authentication.propTypes = {
 
 Authentication.defaultProps = {
   isMember: true,
-  onLogin: (id, pw) => {
+  onLogin: (user_id, user_pw) => {
     console.error("login function not defined");
   }
   // onRegister: (id, pw) => {

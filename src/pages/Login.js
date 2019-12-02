@@ -14,7 +14,7 @@ class Login extends React.Component {
       if (this.props.status === "SUCCESS") {
         let loginData = {
           isLoggedIn: true,
-          username: id
+          user_id: id
         };
         alert(this.props.status);
         return true;
@@ -42,8 +42,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loginRequest: (id, pw) => {
-      return dispatch(loginRequest(id, pw));
+    loginRequest: (user_id, user_pw) => {
+      return dispatch(loginRequest(user_id, user_pw));
     }
   };
 };

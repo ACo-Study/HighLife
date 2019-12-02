@@ -14,7 +14,7 @@ const TB_USER = sequelize.define("tb_user", {
   user_id: {
     type: Sequelize.STRING
   },
-  user_password: {
+  user_pw: {
     type: Sequelize.STRING
   },
   user_name: {
