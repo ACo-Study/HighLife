@@ -23,7 +23,7 @@ const TB_USER = sequelize.define("tb_user", {
 });
 
 TB_USER.sync()
-  .then(() => console.log("Oh yeah! User table created successfully"))
-  .catch(err => console.log("BTW, did you enter wrong database credentials?"));
+  .then(() => console.log("Success user.js."))
+  .catch(err => console.log("Fail user.js. Error:", err));
 
 export default TB_USER;

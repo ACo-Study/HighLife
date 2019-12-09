@@ -7,7 +7,9 @@ class Authentication extends Component {
     super(props);
     this.state = {
       user_id: "",
-      user_pw: ""
+      user_pw: "",
+      user_re_pw: "",
+      user_name: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -24,8 +26,8 @@ class Authentication extends Component {
   handleLogin() {
     let user_id = this.state.user_id;
     let user_pw = this.state.user_pw;
-    this.props.onLogin(user_id, user_pw).then(success => {
-      if (!success) {
+    this.props.onLogin(user_id, user_pw).then(res => {
+      if (!res) {
         this.setState({
           user_pw: ""
         });
@@ -34,15 +36,17 @@ class Authentication extends Component {
   }
 
   handleRegister() {
-    // let id = this.state.user_id;
-    // let pw = this.state.user_pw;
-    // this.props.onRegister(id, pw).then(success => {
-    //   if (!success) {
-    //     this.setState({
-    //       user_pw: ""
-    //     });
-    //   }
-    // });
+    let user_id = this.state.user_id;
+    let user_pw = this.state.user_pw;
+    let user_name = this.state.user_name;
+    this.props.onRegister(user_id, user_pw, user_name).then(res => {
+      if (!res) {
+        this.setState({
+          user_pw: "",
+          user_re_pw: ""
+        });
+      }
+    });
   }
 
   render() {
@@ -55,9 +59,10 @@ class Authentication extends Component {
           onChange={this.handleChange}
           value={this.state.user_id}
         />
+        <br />
         <input
           name="user_pw"
-          type="user_pw"
+          type="password"
           placeholder="비밀번호"
           onChange={this.handleChange}
           value={this.state.user_pw}
@@ -67,20 +72,42 @@ class Authentication extends Component {
 
     const loginView = (
       <div>
-        <form onSubmit={this.handleLogin}>
-          {inputBoxes}
-          <input type="submit" value="로그인" />
-          <Link to="/register">회원가입</Link>
-        </form>
+        {inputBoxes}
+        <button type="submit" onClick={this.handleLogin}>
+          로그인
+        </button>
+        <br />
+        <Link to="/register">회원가입</Link>
       </div>
     );
 
     const registerView = (
       <div>
-        <form onSubmit={this.handleRegister}>
-          {inputBoxes}
-          <input type="submit" value="회원가입" />
-        </form>
+        {inputBoxes}
+        <input
+          name="user_re_pw"
+          type="password"
+          placeholder="비밀번호 재확인"
+          onChange={this.handleChange}
+          value={this.state.user_re_pw}
+        />
+        {this.state.user_pw == this.state.user_re_pw ? (
+          ""
+        ) : (
+          <div>비밀번호가 일치하지 않습니다.</div>
+        )}
+        <br />
+        <input
+          name="user_name"
+          type="text"
+          placeholder="이름"
+          onChange={this.handleChange}
+          value={this.state.user_name}
+        />
+        <br />
+        <button type="submit" onClick={this.handleRegister}>
+          회원가입
+        </button>
       </div>
     );
 
@@ -94,18 +121,18 @@ class Authentication extends Component {
 
 Authentication.propTypes = {
   isMember: PropTypes.bool,
-  onLogin: PropTypes.func
-  // onRegister: PropTypes.func
+  onLogin: PropTypes.func,
+  onRegister: PropTypes.func
 };
 
 Authentication.defaultProps = {
   isMember: true,
   onLogin: (user_id, user_pw) => {
     console.error("login function not defined");
+  },
+  onRegister: (user_id, user_pw, user_name) => {
+    console.error("onRegister not defined");
   }
-  // onRegister: (id, pw) => {
-  //   console.error("onRegister not defined");
-  // }
 };
 
 export default Authentication;

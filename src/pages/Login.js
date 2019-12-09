@@ -9,17 +9,19 @@ class Login extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  handleLogin(id, pw) {
-    return this.props.loginRequest(id, pw).then(() => {
+  handleLogin(user_id, user_pw) {
+    return this.props.loginRequest(user_id, user_pw).then(() => {
       if (this.props.status === "SUCCESS") {
         let loginData = {
           isLoggedIn: true,
-          user_id: id
+          user_id: user_id
         };
-        alert(this.props.status);
+
+        alert("로그인 성공");
+        this.props.history.push("/");
         return true;
       } else {
-        alert(this.props.status);
+        alert("로그인 실패");
         return false;
       }
     });
@@ -29,6 +31,7 @@ class Login extends React.Component {
     return (
       <div>
         <Authentication isMember={true} onLogin={this.handleLogin} />
+        {/* <Redirect to="/" />; */}
       </div>
     );
   }
